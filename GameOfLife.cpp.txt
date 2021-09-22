@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+ 
+int main(){
+         int t ;
+         cin>>t;
+         while(t--){
+           string s ,ans;              
+          int n, m;
+          cin>>n>>m;
+          cin>>s;
+          ans = s;
+          vector<int> v;
+          
+           for(int i=0; i<min(m,n) ; i++){
+                for(int j=0; j<n; j++){
+                    
+                    if(j == 0){
+                        if(s[j] == '0' && s[j+1] == '1')
+                         v.push_back(j);
+                    }
+                    else if( j == n-1){
+                         if(s[j] == '0' && s[j-1] == '1') 
+                         v.push_back(j);
+                    }
+                    else{
+                          if(s[j] == '0' && (s[j+1] -'0' + s[j-1] - '0') == 1)
+                          v.push_back(j);
+                    }
+                }
+                
+                for(auto x : v)
+                      s[x] = '1';
+          }
+          cout<<s<<endl;
+         }
+         return 0;
+}
